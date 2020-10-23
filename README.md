@@ -17,23 +17,20 @@ has_many: purchases
 
 
 ## itemsテーブル
-| Column        | Type     | Options                         |
-| ------------- | -------- | ------------------------------- |
-| user          | referenc | null:false ,foreign_key: true   |
-| name          | string   | null:false                      |
-| image         | text     | null:false                      | 
-| category      | string   | null:false                      | 
-| condition     | string   | null:false                      | 
-| postage_payes | string   | null:false                      | 
-| prefecture    | string   | null:false                      | 
-| handling_tims | string   | null:false                      | 
-| prics         | string   | null:false                      |
-| image         | string   | null:false                      |
-| item          | referenc | null:false ,foreign_key: true   |
+| Column        | Type        | Options                         |
+| ------------- | ----------- | ------------------------------- |
+
+| category      | integer     | null:false                      | 
+| condition     | integer     | null:false                      | 
+| postage_payes | integer     | null:false                      | 
+| prefecture    | integer     | null:false                      | 
+| handling_tims | integer     | null:false                      | 
+| prics         | string      | null:false                      |
+| item          | references  | null:false                      |
  
 ### Association
 has_one: purchases
-belongs_to: users
+belongs_to: user
 
 
 ## purchasesテーブル
@@ -43,20 +40,20 @@ belongs_to: users
 | user   | references | null:false,foreign_key: true |
 
 ### Association
-belongs_to: users
-belongs_to: items
-has_one: addresses
+belongs_to: user
+belongs_to: item
+has_one: address
 
 
 ## addressesテーブル
-| Column        |Type      |Options                       |
-| ------------- | -------- | ---------------------------- |
-| post_code     | string   | null:false                   |
-| prefectures   | integer  | null:false,foreign_key: true |
-| city          | string   | null:false                   |
-| building_name | string   |                              |
-| phone_number  | string   | null:false,uniqueness:trus   |
-| purchase      | referenc | null:false,foreign_key: true |
+| Column         |Type        |Options                       |
+| -------------- | ---------- | ---------------------------- |
+| post_code_id   | string     | null:false                   |
+| prefectures_id | integer    | null:false                   |
+| city           | string     | null:false                   |
+| building_name  | string     |                              |
+| phone_number   | string     | null:false,uniqueness:trus   |
+| purchase       | references | null:false,foreign_key: true |
 
 ### Association
-belongs_to: purchases
+belongs_to: purchase
