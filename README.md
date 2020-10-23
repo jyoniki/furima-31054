@@ -16,7 +16,7 @@ has_many: items
 has_many: purchases
 
 
-## itemsテーブル
+## itemsテーブル  
 | Column           | Type        | Options                         |
 | -----------------| ----------- | ------------------------------- |
 | name      　　　  | string      | null:false                      |
