@@ -19,7 +19,7 @@ has_many: purchases
 ## itemsテーブル  
 | Column           | Type        | Options                         |
 | -----------------| ----------- | ------------------------------- |
-| name      　　　  | string      | null:false                      |
+| name             | string      | null:false                      |
 | description_item | text        | null:false                      |
 | category_id      | integer     | null:false                      | 
 | condition_id     | integer     | null:false                      | 
