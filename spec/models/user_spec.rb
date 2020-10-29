@@ -9,43 +9,8 @@ describe User do
       it 'nicknameとemail、passwordとpassword_confirmation、first_nameとlast_name、first_name_kanaとlast_name_kana、birth_dayが存在すれば登録できる' do
         expect(@user).to be_valid
       end
-
-      it 'nicknameがあれば登録できる' do
-        @user.nickname = 'test'
-        expect(@user).to be_valid
-      end
-
-      it 'passwordが半角英数の混合で6文字以上あれば登録できる' do
-        @user.password = 'a00000'
-        @user.password_confirmation = 'a00000'
-        expect(@user).to be_valid
-      end
-
-      it 'first_nameがあれば登録できる' do
-        @user.first_name = 'てすと'
-        expect(@user).to be_valid
-      end
-
-      it 'last_nameがあれば登録できる' do
-        @user.last_name = 'てす'
-        expect(@user).to be_valid
-      end
-
-      it 'first_name_kanaがあれば登録できる' do
-        @user.first_name_kana = 'テスト'
-        expect(@user).to be_valid
-      end
-
-      it 'last_name_kanaがあれば登録できる' do
-        @user.last_name_kana = 'テス'
-        expect(@user).to be_valid
-      end
-
-      it 'birth_dayがあれば登録できる' do
-        @user.birth_day = '2000-01-01'
-        expect(@user).to be_valid
-      end
     end
+
 
     context '新規登録がうまくいかないとき' do
       it 'nicknameが空登録できない' do
@@ -84,6 +49,13 @@ describe User do
       it 'passwordが半角英数の混合でなければ登録できない' do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+
+      it 'passwordが数字だけだと登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
