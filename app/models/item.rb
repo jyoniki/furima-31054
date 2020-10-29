@@ -13,5 +13,5 @@ class Item < ApplicationRecord
     validates :handling_tims_id
     validates :price
   end
-  validates :user, presence: true, foreign_key: true
+  #validates :user, presence: true, foreign_key: true
 end
