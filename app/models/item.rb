@@ -12,6 +12,6 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :handling_tims_id
     validates :price
-    validates :user, foreign_key: true
   end
+  validates :user, presence: true, foreign_key: true
 end
