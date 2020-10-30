@@ -1,7 +1,4 @@
-class Genre < ActiveHash::Base
-  has_many :items
-  
-  
+class Category < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: 'レディース' },
@@ -14,6 +11,4 @@ class Genre < ActiveHash::Base
     { id: 9, name: 'ハンドメイド' },
     { id: 10, name: 'その他' }
   ]
-
-
 end
