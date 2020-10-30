@@ -18,10 +18,10 @@ class Item < ApplicationRecord
     validates :postage_payes_id
     validates :prefecture_id
     validates :handling_tims_id
-    validates :price
+    validates :price,              numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999} , format:{ with:/\A[0-9]+\z/ }
     validates :category
     validates :image
   end
    validates :category_id, :condition_id, :postage_payes_id, :prefecture_id, :handling_tims_id, numericality: { other_than: 1 }
-  #validates :user, presence: true, foreign_key: true
+  
 end
