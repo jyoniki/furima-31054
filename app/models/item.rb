@@ -11,8 +11,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :handling_tim
 
   with_options presence: true do
-    validates :name
-    validates :description_item
+    validates :name,               length:{maximum:40}
+    validates :description_item,   length:{maximum:1000}
     validates :category_id
     validates :condition_id
     validates :postage_payes_id
