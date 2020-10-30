@@ -20,6 +20,7 @@ class Item < ApplicationRecord
     validates :handling_tims_id
     validates :price
     validates :category
+    validates :image
   end
    validates :category_id, :condition_id, :postage_payes_id, :prefecture_id, :handling_tims_id, numericality: { other_than: 1 }
   #validates :user, presence: true, foreign_key: true
