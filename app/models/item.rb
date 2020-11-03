@@ -6,9 +6,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
-  belongs_to_active_hash :postage_paye
+  belongs_to_active_hash :postage_payes
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :handling_tim
+  belongs_to_active_hash :handling_tims
 
   with_options presence: true do
     validates :name,               length: { maximum: 40 }
