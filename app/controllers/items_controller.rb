@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+    
 
   def index
     @items = Item.order(created_at: :desc)
@@ -17,6 +18,11 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
+
+  def show
+    
+  end
+  
 
   private
 
