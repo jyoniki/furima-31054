@@ -15,6 +15,7 @@ class PurchaseAddress
   validates :building_name
 
   def save
-    
+    Purchase.create()
+    Address.create(post_code: post_code, prefectures_id: prefectures_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, purchase: purchase, user_id: user_id)
   end
 end
