@@ -9,7 +9,7 @@ class PurchaseAddress
      validates :house_number
      validates :phone_number
    end
-   validates :building_name
+     #validates :building_name
 
   def save
     Purchase.create()
