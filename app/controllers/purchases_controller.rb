@@ -10,7 +10,7 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     if @purchase_address.valid?
       @purchase_address.save
-      redirect_to item_path
+      redirect_to root_path
     else
       render action: :index
     end
