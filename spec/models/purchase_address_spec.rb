@@ -29,7 +29,7 @@ describe PurchaseAddress do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @purchase_address.post_code = '1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Post code is invalid")
       end
       it 'prefecture_idが1だと登録できない' do
         @purchase_address.prefecture_id = 1
@@ -39,22 +39,27 @@ describe PurchaseAddress do
       it 'cityが空だと登録できない' do
         @purchase_address.city = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("City code can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("City can't be blank")
       end
       it 'house_numberが空だと登録できない' do
         @purchase_address.house_number = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("House number code can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("House number can't be blank")
       end
       it 'phone_numberが空だと登録できない' do
         @purchase_address.phone_number = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number code can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが12桁以上だと登録できない' do
         @purchase_address.phone_number = '123456789123'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number code can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "tokenが空では登録できないこと" do
+        @purchase_address.token = ""
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
