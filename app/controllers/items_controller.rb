@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order(created_at: :desc)
-
   end
 
   def new
@@ -36,9 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user == @item.user
-      @item.destroy
-    end
+    @item.destroy if current_user == @item.user
     redirect_to root_path
   end
 
